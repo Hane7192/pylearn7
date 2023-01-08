@@ -17,3 +17,9 @@ class Media:
         first_stream.download(output_path = "./", filename = (str(self.name) + ".mp4"))
         
 
+    def remove(self, other):
+        other.remove(self)
+        print(self.name, "is removed successfully!")
+
+    
+        

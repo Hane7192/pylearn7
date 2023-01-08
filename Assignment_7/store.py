@@ -47,7 +47,7 @@ def add():
     count = input("Enter the count: ")
     new_product = {"code": code, "name": name, "price": price, "count": count}
     PRODUCTS.append(new_product)
-    print("You added an item succestully!")
+    print("You added an item successfully!")
 
 def edit():
     user_input = input("Enter the code of the product: ")
