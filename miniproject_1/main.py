@@ -30,8 +30,8 @@ def read_from_database():
     f.close()
 
 def write_to_database():
-    f = open("database.txt", "w")
-    f = open("database.txt", "a")
+    f = open("database.txt", "w", encoding="utf8")
+    f = open("database.txt", "a" , encoding="utf8")
     for product in PRODUCTS:
         
         if isinstance(product , Series):
