@@ -1,6 +1,5 @@
 import arcade 
 from bullet import Bullet
-from hearts import Hearts
 
 class Spaceship(arcade.Sprite):
     def __init__(self, game):

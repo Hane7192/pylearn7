@@ -8,5 +8,3 @@ class Hearts(arcade.Sprite):
         self.width = 35
         self.height = 30
 
-    # def point(self):
-    #     self.point = 0
