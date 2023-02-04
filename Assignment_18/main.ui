@@ -299,6 +299,9 @@ border-radius : 8px;
     </item>
     <item row="7" column="0">
      <widget class="QRadioButton" name="r_btn_1">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>

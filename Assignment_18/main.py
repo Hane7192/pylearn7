@@ -45,7 +45,7 @@ def check():
         
         msg_box = QMessageBox(text = "Player " + str(winner) + " Wins!")
         msg_box.exec()
-
+        
     #check the draw condition    
     elif x == False and i == 9:
         draw_score += 1
@@ -62,20 +62,30 @@ def player2_type(type):
     else:
         state = "computer"
     
+def new_game():
+    global player
+    for i in range(3):
+        for j in range (3):    
+            buttons[i][j].setText(None)
+            buttons[i][j].setStyleSheet("background-color: rgb(67, 0, 100); border-radius : 8px; margin: 6px 6px;")
+    player = 1
+    main_window.turn_box.setText("X turn")
+    main_window.turn_box.setStyleSheet("color : rgb(213, 122, 193); background-color: rgb(67, 0, 100); border-radius : 8px; padding: 10px 10px; margin: 6px 6px;")
     
-
+def info():
+    info_window.show()
+    
 def play(row, col):
     global player
     global buttons
     global winner
-    global cell
 
     if player == 1:
         if buttons[row][col].text() == "":
             buttons[row][col].setText("X")
-            buttons[row][col].setStyleSheet("color : rgb(213, 122, 193);")
+            buttons[row][col].setStyleSheet("color : rgb(213, 122, 193); background-color: rgb(67, 0, 100); border-radius : 8px; margin: 6px 6px;")
             main_window.turn_box.setText("O turn")
-            main_window.turn_box.setStyleSheet("color : rgb(182, 199, 236);")
+            main_window.turn_box.setStyleSheet("color : rgb(182, 199, 236); background-color: rgb(67, 0, 100); border-radius : 8px; padding: 10px 10px; margin: 6px 6px;")
             player = 2
             winner = 1
             
@@ -83,9 +93,9 @@ def play(row, col):
         if state == "player 2":
             if buttons[row][col].text() == "":
                 buttons[row][col].setText("O")
-                buttons[row][col].setStyleSheet("color : rgb(182, 199, 236);")
+                buttons[row][col].setStyleSheet("color : rgb(182, 199, 236); background-color: rgb(67, 0, 100); border-radius : 8px; margin: 6px 6px;")
                 main_window.turn_box.setText("X turn")
-                main_window.turn_box.setStyleSheet("color : rgb(213, 122, 193);")
+                main_window.turn_box.setStyleSheet("color : rgb(213, 122, 193); background-color: rgb(67, 0, 100); border-radius : 8px; padding: 10px 10px; margin: 6px 6px;")
                 player = 1
                 winner = 2
 
@@ -109,15 +119,18 @@ app = QApplication([])
 
 loader = QUiLoader()
 main_window = loader.load("main.ui")
+info_window = loader.load("info.ui")
 main_window.show()
+
 
 player = 1 
 X_score = 0
 O_score = 0
 draw_score = 0
 
+
 main_window.turn_box.setText("X turn")
-main_window.turn_box.setStyleSheet("color : rgb(213, 122, 193);")
+main_window.turn_box.setStyleSheet("color : rgb(213, 122, 193); background-color: rgb(67, 0, 100); border-radius : 8px; padding: 10px 10px; margin: 6px 6px;")
 
 buttons = [[main_window.btn_1, main_window.btn_2, main_window.btn_3],
            [main_window.btn_4, main_window.btn_5, main_window.btn_6],
@@ -130,4 +143,6 @@ for i in range(3):
 
 main_window.r_btn_1.clicked.connect(partial(player2_type , "player"))
 main_window.r_btn_2.clicked.connect(partial(player2_type , "computer"))
+main_window.btn_rst.clicked.connect(new_game)
+main_window.btn_info.clicked.connect(info)
 app.exec()
